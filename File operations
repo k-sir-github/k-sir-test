@@ -1,0 +1,42 @@
+# 文件操作 
+
+            # 文件打开方式：
+            # r : 以只读方式打开
+            # w : 写方式打开，会覆盖以前的内容
+            # x : 创建方式打开，如文件已存在，报错
+            # a : append方式，以追加的方式对文件内容进行写入
+            # b : binary方式，二进制方式写入
+            # t : 文本方式打开
+            # + : 可读写
+
+            # r 表示后面字符串内容不需要转义
+            '''
+            # f 称之为文件句柄
+            f = open(r"地址","打开方式")
+            # 文件打开后必须关闭
+            f.close()
+            '''
+            
+            ### with语句
+            # with 语句使用的技术是一种成为上下文管理协议的技术（contextmanagementprotocal）
+            # 自动判断文件的作用域，自动关闭不在使用的打开的文件句柄
+    
+            # with使用方式：
+            '''
+            with open(r"地址","打开方式") as f:
+                pass
+                # 下面语句块开始对文件 f 进行操作
+                # 在本模块中不需要再使用close关闭文件 f
+
+             '''
+
+u = input("请输入用户名:")
+def user_login(user_name):
+    with open("//text01.txt","a") as lg:
+        lg.write("用户{},今天登陆系统\n".format(user_name))
+
+user_login(u)
+
+# 小白自学，如有不足请大佬赐教，感激不尽！
+# Small white study independently, if have the insufficiency please big guy grant instruction, gratitude is endless!
+
