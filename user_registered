@@ -1,0 +1,34 @@
+# 此代码模拟数据库，实际使用:字典
+from datetime import datetime
+
+def user_login():
+    num = 3         # 输出次数为 3 次
+    while num:      # 执行循环 当num = 0 时，程序停止
+        user_names = input("请输入用户名:")     # 用户输入 name 值
+        user_passs = input("请输入密码:")       # 用户输入 password 值
+        if user_names != "":     # 判断用户名不能为空
+            if user_passs != "":     # 判断用户密码不能为空
+                if user_names in user_name_dict:    # 判断用户输入的 name 是否在数据库中
+                    if user_passs == user_name_dict.get(user_names):    # 判断用户输入的 password 是否和数据库中的数据相同
+                        print("welcome!")       # 用户名 和 密码相同 则输出 welcome
+                        t = datetime.now()      # 调用时间
+                        time = t.strftime("%Y-%m-%d %H-%M-%D")  # 将时间格式限定为 %Y - %m - %d  %H - %M - %D
+                        with open ("//user_registered.txt","a") as ul:    # 以写入方式打开文件user_registered.txt  重命名为 ul 
+                            ul.write("用户{},在{}登录系统\n".format(user_names,time))       # 以限定格式写入用户登录日志中
+                        break       # 退出循环
+                    else:
+                        num -= 1    # 如果用户输入的密码不对 则输入次数减一次
+
+                        print("密码错误！这是第{}次".format(num))
+                
+                else:
+                    print("用户名错误！")
+            else:
+                print("密码不能为空，请重新输入！")
+        else:
+            print("用户名不能为空，请重新输入！")
+                
+user_login()
+
+# 小白自学，如有不足请大佬赐教，感激不尽！
+# Small white study independently, if have the insufficiency please big guy grant instruction, gratitude is endless!
